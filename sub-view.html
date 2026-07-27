@@ -92,7 +92,7 @@ body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:9
 <body class="dark">
 <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
 
-<div class="w-full max-w-md mx-auto p-4 sm:p-6 pt-14 sm:pt-16 space-y-4">
+<div class="w-full max-w-md mx-auto p-4 sm:p-6 pt-14 sm:pt-16 space-y-6">
 
 <!-- HEADER -->
 <div class="glass rounded-3xl p-7 text-center relative overflow-hidden fade-in" style="animation-delay:0s">
@@ -107,13 +107,13 @@ body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:9
 </div>
 
 <!-- USAGE -->
-<div class="glass rounded-3xl p-5 hidden fade-in" id="usageCard">
+<div class="glass rounded-3xl p-6 hidden fade-in" id="usageCard">
 <div class="flex justify-between items-center text-sm mb-3">
 <span class="txt-box"><i class="fas fa-chart-pie ml-1.5 text-indigo-400"></i>حجم مصرف شده</span>
 <span class="font-bold" id="usageHeadline"><span class="txt-box">-</span></span>
 </div>
 <div class="progress-bg mb-4"><div class="progress-fill" id="usageFill" style="width:0%"></div></div>
-<div class="grid grid-cols-2 gap-3">
+<div class="grid grid-cols-2 gap-4">
 <div class="stat rounded-2xl p-3 text-center">
 <div class="text-[10px] mb-1"><span class="txt-box"><i class="fas fa-calendar-days ml-1 text-purple-400"></i>تمدید بعدی</span></div>
 <div class="text-[13px] font-semibold" id="renewDate"><span class="txt-box">-</span></div>
@@ -126,13 +126,13 @@ body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:9
 </div>
 
 <!-- PROTOCOL -->
-<div class="glass rounded-3xl p-5 hidden fade-in" id="protoCard" style="animation-delay:0.1s">
+<div class="glass rounded-3xl p-6 hidden fade-in" id="protoCard" style="animation-delay:0.1s">
 <div class="text-[12px] mb-3"><span class="txt-box"><i class="fas fa-shuffle ml-1.5 text-indigo-400"></i>ترکیب پروتکل‌ها</span></div>
 <div id="protoBars" class="space-y-2.5"></div>
 </div>
 
 <!-- CONFIGS -->
-<div class="space-y-3 hidden" id="listWrap">
+<div class="space-y-4 hidden" id="listWrap">
 <div class="flex items-center justify-between px-1 mb-1">
 <h2 class="text-[11px] font-bold uppercase tracking-widest"><span class="txt-box">کانفیگ‌ها <span class="mono" id="countBadge">(0)</span></span></h2>
 <button id="copyAllBtn" class="text-[11px] text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1"><i class="fas fa-copy"></i>کپی همه</button>
