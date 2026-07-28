@@ -15,56 +15,51 @@ body.dark{background:#000;color:#e2e8f0}
 body.dark::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(99,102,241,0.12) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(168,85,247,0.08) 0%,transparent 50%);z-index:-1}
 body.light{background:#f0f2f5;color:#1a1a2e}
 body.light::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(99,102,241,0.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(168,85,247,0.04) 0%,transparent 50%);z-index:-1}
-
 body.dark .card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);box-shadow:0 8px 32px rgba(0,0,0,0.35)}
 body.light .card{background:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.8);box-shadow:0 8px 32px rgba(0,0,0,0.06)}
-
 body.dark .inner{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04)}
 body.light .inner{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.06)}
-
 body.dark .tbox{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:6px 12px;display:inline-block}
 body.light .tbox{background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:6px 12px;display:inline-block}
-
 body.dark .ic{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:#94a3b8}
 body.dark .ic:hover{background:rgba(99,102,241,0.15);color:#818cf8}
 body.light .ic{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.06);color:#64748b}
 body.light .ic:hover{background:rgba(99,102,241,0.1);color:#6366f1}
-
 body.dark .tg{background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.15);color:#818cf8}
 body.dark .tg:hover{background:rgba(99,102,241,0.15)}
 body.light .tg{background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.12);color:#4f46e5}
 body.light .tg:hover{background:rgba(99,102,241,0.1)}
-
 .theme-btn{position:fixed;top:14px;left:14px;z-index:50;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:16px;transition:all 0.3s}
 body.dark .theme-btn{background:rgba(255,255,255,0.06);color:#fbbf24;border:1px solid rgba(255,255,255,0.08)}
 body.light .theme-btn{background:rgba(0,0,0,0.03);color:#6366f1;border:1px solid rgba(0,0,0,0.06)}
 .theme-btn:hover{transform:scale(1.1)}
-
 .pbar{background:rgba(148,163,184,0.1);border-radius:99px;height:8px;overflow:hidden}
 body.light .pbar{background:rgba(0,0,0,0.06)}
 .pfill{height:100%;border-radius:99px;background:linear-gradient(90deg,#6366f1,#a855f7,#ec4899);background-size:200% 100%;animation:shimmer 3s ease infinite;transition:width 0.8s}
 @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-
 body.dark .pbar2{height:5px;border-radius:99px;background:rgba(255,255,255,0.04)}
 body.light .pbar2{height:5px;border-radius:99px;background:rgba(0,0,0,0.04)}
-
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:linear-gradient(135deg,#10b981,#059669);color:white;font-weight:700;padding:10px 20px;border-radius:16px;font-size:12px;z-index:100;opacity:0;transition:all 0.3s}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-
 .qr-box{display:none;padding-top:16px;margin-top:16px;border-top:1px dashed rgba(148,163,184,0.15);justify-content:center}
 .qr-box.show{display:flex}
 body.light .qr-box{border-top-color:rgba(0,0,0,0.08)}
-
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeUp 0.5s ease-out forwards;opacity:0}
-
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}
 body.dark ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:99px}
 body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:99px}
 .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
-
-/* Section spacing */
 .sec{margin-bottom:40px}
+
+/* Logo styles */
+.logo-main{width:88px;height:88px;margin:0 auto 24px;border-radius:26px;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(135deg,#6366f1,#8b5cf6,#a855f7);box-shadow:0 12px 40px rgba(99,102,241,0.5),0 0 80px rgba(139,92,246,0.2)}
+.logo-main::before{content:'';position:absolute;inset:-3px;border-radius:28px;background:linear-gradient(135deg,rgba(99,102,241,0.6),rgba(168,85,247,0.6),rgba(236,72,153,0.6));z-index:-1;filter:blur(8px);opacity:0.6}
+.logo-main .logo-inner{position:absolute;inset:0;border-radius:26px;background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 50%)}
+.logo-main svg{position:relative;z-index:1;filter:drop-shadow(0 2px 8px rgba(255,255,255,0.3))}
+
+.proto-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;position:relative;overflow:hidden}
+.proto-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.15) 0%,transparent 60%)}
 </style>
 </head>
 <body class="dark">
@@ -75,10 +70,16 @@ body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:9
   <!-- HEADER -->
   <div class="card rounded-3xl p-10 text-center relative overflow-hidden fade-in" style="animation-delay:0s">
     <div class="h-[2px] absolute top-0 left-0 w-full bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent"></div>
-    <div class="w-[80px] h-[80px] mx-auto mb-6 rounded-[24px] flex items-center justify-center relative" style="background:linear-gradient(135deg,#6366f1,#8b5cf6,#a855f7);box-shadow:0 8px 24px rgba(99,102,241,0.4)">
-      <div class="absolute inset-0 rounded-[24px]" style="background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 50%)"></div>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+
+    <!-- لوگوی اصلی -->
+    <div class="logo-main">
+      <div class="logo-inner"></div>
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M9 12l2 2 4-4" stroke-width="2"/>
+      </svg>
     </div>
+
     <h1 class="text-xl font-bold mb-3" id="userTitle"><span class="tbox">اکانت شما</span></h1>
     <p class="text-[12px] mb-4" id="statusMsg"><span class="tbox" style="font-size:12px">در حال دریافت اطلاعات...</span></p>
     <div>
@@ -126,7 +127,7 @@ body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:9
   <p class="text-center text-[12px] hidden py-12" id="emptyMsg">کانفیگی پیدا نشد.</p>
 
   <!-- FOOTER -->
-  <div class="text-center pt-12 pb-6 fade-in" style="animation-delay:0.2s">
+  <div class="text-center pt-12 pb-4 fade-in" style="animation-delay:0.2s">
     <p class="text-[12px] mb-4">کند ذهن هستید و نتوانستید وصل شوید ؟</p>
     <a href="https://t.me/saweg78" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-[13px] font-semibold no-underline transition-all tg">
       <i class="fab fa-telegram text-lg"></i>بهتره به داش مهرداد پیام بدی
@@ -146,7 +147,7 @@ function toggleTheme(){theme=theme==='dark'?'light':'dark';document.body.classNa
 const userTitle=document.getElementById('userTitle'),statusMsg=document.getElementById('statusMsg'),statusBadge=document.getElementById('statusBadge'),usageCard=document.getElementById('usageCard'),usageFill=document.getElementById('usageFill'),usageHeadline=document.getElementById('usageHeadline'),renewDate=document.getElementById('renewDate'),daysLeft=document.getElementById('daysLeft'),protoCard=document.getElementById('protoCard'),protoBars=document.getElementById('protoBars'),listWrap=document.getElementById('listWrap'),listEl=document.getElementById('list'),countBadge=document.getElementById('countBadge'),emptyMsg=document.getElementById('emptyMsg'),copyAllBtn=document.getElementById('copyAllBtn'),toastEl=document.getElementById('toast');
 
 function showToast(t){toastEl.innerHTML='<i class="fas fa-check-circle ml-1"></i> '+t;toastEl.classList.add('show');setTimeout(()=>toastEl.classList.remove('show'),1800)}
-function setBadge(s,t){const c={loading:'loading',active:'active',error:'error'};statusBadge.className='inline-flex items-center gap-1.5 px-4 py-1.5 text-[12px] font-medium rounded-full border';const colors={loading:['rgba(148,163,184,0.1)','#94a3b8','rgba(148,163,184,0.15)','bg-slate-400'],active:['rgba(16,185,129,0.1)','#34d399','rgba(16,185,129,0.2)','bg-emerald-400'],error:['rgba(244,63,94,0.1)','#fb7185','rgba(244,63,94,0.2)','bg-rose-400']};const cv=colors[s]||colors.loading;statusBadge.style.background=cv[0];statusBadge.style.color=cv[1];statusBadge.style.borderColor=cv[2];statusBadge.innerHTML=`<span class="w-2 h-2 rounded-full ${cv[3]} ${s==='active'?'animate-pulse':''}"></span><span>${t}</span>`}
+function setBadge(s,t){statusBadge.className='inline-flex items-center gap-1.5 px-4 py-1.5 text-[12px] font-medium rounded-full border';const colors={loading:['rgba(148,163,184,0.1)','#94a3b8','rgba(148,163,184,0.15)','bg-slate-400'],active:['rgba(16,185,129,0.1)','#34d399','rgba(16,185,129,0.2)','bg-emerald-400'],error:['rgba(244,63,94,0.1)','#fb7185','rgba(244,63,94,0.2)','bg-rose-400']};const cv=colors[s]||colors.loading;statusBadge.style.background=cv[0];statusBadge.style.color=cv[1];statusBadge.style.borderColor=cv[2];statusBadge.innerHTML=`<span class="w-2 h-2 rounded-full ${cv[3]} ${s==='active'?'animate-pulse':''}"></span><span>${t}</span>`}
 function setStatus(t){statusMsg.innerHTML='<span class="tbox" style="font-size:12px">'+t+'</span>'}
 function b64d(s){s=s.trim().replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';try{return decodeURIComponent(escape(atob(s)))}catch(e){try{return atob(s)}catch(e2){return''}}}
 function fmtB(b){if(!isFinite(b)||b<0)return'-';const u=['B','KB','MB','GB','TB'];let i=0,v=b;while(v>=1024&&i<u.length-1){v/=1024;i++}return v.toFixed(v>=10?0:1)+' '+u[i]}
@@ -165,7 +166,7 @@ else{usageFill.style.width='0%';usageHeadline.innerHTML='<span class="tbox">بد
 if(expire>0){const now=Math.floor(Date.now()/1000);const days=Math.max(0,Math.ceil((expire-now)/86400));daysLeft.innerHTML='<span class="tbox">'+toFa(days)+' روز</span>';renewDate.innerHTML='<span class="tbox">'+fmtJ(expire)+'</span>'}
 else{daysLeft.innerHTML='<span class="tbox">نامحدود</span>';renewDate.innerHTML='<span class="tbox">نامحدود</span>'}}
 
-function dP(u){if(u.startsWith('vless://'))return{key:'vless',l:'VLESS',i:'fa-bolt',c:'#818cf8'};if(u.startsWith('vmess://'))return{key:'vmess',l:'VMESS',i:'fa-shuffle',c:'#c084fc'};if(u.startsWith('trojan://'))return{key:'trojan',l:'TROJAN',i:'fa-mask',c:'#f472b6'};if(u.startsWith('ss://'))return{key:'ss',l:'SS',i:'fa-lock',c:'#38bdf8'};if(u.startsWith('hysteria2://')||u.startsWith('hy2://'))return{key:'hy2',l:'HY2',i:'fa-cloud',c:'#34d399'};if(u.startsWith('tuic://'))return{key:'tuic',l:'TUIC',i:'fa-satellite-dish',c:'#fbbf24'};return{key:'other',l:'UNK',i:'fa-link',c:'#94a3b8'}}
+function dP(u){if(u.startsWith('vless://'))return{key:'vless',l:'VLESS',i:'fa-bolt',c:'#818cf8',bg:'rgba(129,140,248,0.15)'};if(u.startsWith('vmess://'))return{key:'vmess',l:'VMESS',i:'fa-shuffle',c:'#c084fc',bg:'rgba(192,132,252,0.15)'};if(u.startsWith('trojan://'))return{key:'trojan',l:'TROJAN',i:'fa-mask',c:'#f472b6',bg:'rgba(244,114,182,0.15)'};if(u.startsWith('ss://'))return{key:'ss',l:'SS',i:'fa-lock',c:'#38bdf8',bg:'rgba(56,189,248,0.15)'};if(u.startsWith('hysteria2://')||u.startsWith('hy2://'))return{key:'hy2',l:'HY2',i:'fa-cloud',c:'#34d399',bg:'rgba(52,211,153,0.15)'};if(u.startsWith('tuic://'))return{key:'tuic',l:'TUIC',i:'fa-satellite-dish',c:'#fbbf24',bg:'rgba(251,191,36,0.15)'};return{key:'other',l:'UNK',i:'fa-link',c:'#94a3b8',bg:'rgba(148,163,184,0.15)'}}
 function pE(u){const p=dP(u);let n=p.l,s='';try{if(p.key==='vmess'){const j=JSON.parse(b64d(u.replace('vmess://','')));n=j.ps||p.l;s=(j.add||'-')+':'+(j.port||'-')+' · '+(j.net||'tcp')}else{const hi=u.indexOf('#');if(hi>-1)n=decodeURIComponent(u.slice(hi+1))||p.l;const body=u.split('://')[1]||'';const bh=body.split('#')[0];const[uh,qs]=bh.split('?');const af=uh.includes('@')?uh.split('@')[1]:uh;const[host,port]=af.split(':');const sp=new URLSearchParams(qs||'');s=(host||'-')+':'+(port||'-')+' · '+(sp.get('type')||'tcp')}}catch(e){}return{u,p,n,s}}
 
 function renderProto(entries){
@@ -183,7 +184,7 @@ emptyMsg.classList.add('hidden');listWrap.classList.remove('hidden');setStatus('
 const entries=lines.map(pE);countBadge.textContent='('+toFa(entries.length)+')';renderProto(entries);
 if(entries.length&&entries[0].n)userTitle.innerHTML='<span class="tbox">'+entries[0].n+'</span>';
 entries.forEach((e,i)=>{const card=document.createElement('div');card.className='card rounded-2xl p-5 fade-in';
-card.innerHTML='<div class="flex items-center justify-between"><div class="flex items-center gap-4 min-w-0"><div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:'+e.p.c+'18;color:'+e.p.c+'"><i class="fas '+e.p.i+' text-xl"></i></div><div class="min-w-0"><div class="text-sm font-semibold truncate"><span class="tbox">'+e.n+'</span></div><div class="text-[11px] mono truncate"><span class="tbox">'+e.s+'</span></div></div></div><div class="flex items-center gap-2 flex-shrink-0"><button class="ic w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all qr-t"><i class="fas fa-qrcode"></i></button><button class="ic w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all cp-o"><i class="fas fa-copy"></i></button></div></div><div class="qr-box" id="qr-'+i+'"><div class="p-2 bg-white rounded-xl" id="qr-c-'+i+'"></div></div>';
+card.innerHTML=`<div class="flex items-center justify-between"><div class="flex items-center gap-4 min-w-0"><div class="proto-icon" style="background:${e.p.bg};color:${e.p.c}"><i class="fas ${e.p.i}"></i></div><div class="min-w-0"><div class="text-sm font-semibold truncate"><span class="tbox">${e.n}</span></div><div class="text-[11px] mono truncate"><span class="tbox">${e.s}</span></div></div></div><div class="flex items-center gap-2 flex-shrink-0"><button class="ic w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all qr-t"><i class="fas fa-qrcode"></i></button><button class="ic w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all cp-o"><i class="fas fa-copy"></i></button></div></div><div class="qr-box" id="qr-${i}"><div class="p-2 bg-white rounded-xl" id="qr-c-${i}"></div></div>`;
 listEl.appendChild(card);
 card.querySelector('.cp-o').onclick=()=>navigator.clipboard.writeText(e.u).then(()=>showToast('کپی شد ✓'));
 card.querySelector('.qr-t').onclick=()=>{const q=card.querySelector('.qr-box');const showing=q.classList.contains('show');q.classList.toggle('show',!showing);const h=card.querySelector('#qr-c-'+i);if(!showing&&h.childElementCount===0)new QRCode(h,{text:e.u,width:140,height:140,colorDark:'#0B0E13',colorLight:'#ffffff'})}})}
