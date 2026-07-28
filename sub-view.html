@@ -11,10 +11,8 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Vazirmatn',sans-serif;min-height:100vh;overflow-x:hidden}
-
 body.dark{background:#000;color:#e2e8f0}
 body.dark::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(99,102,241,0.12) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(168,85,247,0.08) 0%,transparent 50%);z-index:-1}
-
 body.light{background:#f0f2f5;color:#1a1a2e}
 body.light::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(99,102,241,0.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(168,85,247,0.04) 0%,transparent 50%);z-index:-1}
 
@@ -64,60 +62,63 @@ body.light .qr-box{border-top-color:rgba(0,0,0,0.08)}
 body.dark ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:99px}
 body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:99px}
 .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+
+/* Section spacing */
+.sec{margin-bottom:24px}
 </style>
 </head>
 <body class="dark">
 <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
 
-<div class="w-full max-w-md mx-auto px-4 pt-16 pb-10">
+<div class="w-full max-w-md mx-auto px-5 pt-16 pb-10">
 
   <!-- HEADER -->
-  <div class="card rounded-3xl p-7 text-center relative overflow-hidden fade-in" style="animation-delay:0s">
+  <div class="card rounded-3xl p-8 text-center relative overflow-hidden fade-in" style="animation-delay:0s">
     <div class="h-[2px] absolute top-0 left-0 w-full bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent"></div>
-    <div class="w-[72px] h-[72px] mx-auto mb-5 rounded-[22px] flex items-center justify-center relative" style="background:linear-gradient(135deg,#6366f1,#8b5cf6,#a855f7);box-shadow:0 8px 24px rgba(99,102,241,0.4)">
-      <div class="absolute inset-0 rounded-[22px]" style="background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 50%)"></div>
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    <div class="w-[80px] h-[80px] mx-auto mb-6 rounded-[24px] flex items-center justify-center relative" style="background:linear-gradient(135deg,#6366f1,#8b5cf6,#a855f7);box-shadow:0 8px 24px rgba(99,102,241,0.4)">
+      <div class="absolute inset-0 rounded-[24px]" style="background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 50%)"></div>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
     </div>
-    <h1 class="text-lg font-bold mb-2" id="userTitle"><span class="tbox">اکانت شما</span></h1>
-    <p class="text-[11px] mb-3" id="statusMsg"><span class="tbox" style="font-size:11px">در حال دریافت اطلاعات...</span></p>
+    <h1 class="text-xl font-bold mb-3" id="userTitle"><span class="tbox">اکانت شما</span></h1>
+    <p class="text-[12px] mb-4" id="statusMsg"><span class="tbox" style="font-size:12px">در حال دریافت اطلاعات...</span></p>
     <div>
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-medium rounded-full border" style="background:rgba(148,163,184,0.1);color:#94a3b8;border-color:rgba(148,163,184,0.15)" id="statusBadge">
-        <span class="w-1.5 h-1.5 rounded-full" style="background:#94a3b8"></span>
+      <span class="inline-flex items-center gap-1.5 px-4 py-1.5 text-[12px] font-medium rounded-full border" style="background:rgba(148,163,184,0.1);color:#94a3b8;border-color:rgba(148,163,184,0.15)" id="statusBadge">
+        <span class="w-2 h-2 rounded-full" style="background:#94a3b8"></span>
         <span id="statusBadgeText">در حال بررسی</span>
       </span>
     </div>
   </div>
 
   <!-- USAGE -->
-  <div class="card rounded-3xl p-6 hidden fade-in" id="usageCard" style="margin-top:20px">
+  <div class="card rounded-3xl p-6 hidden fade-in sec" id="usageCard">
     <div class="flex justify-between items-center text-sm mb-4">
       <span class="tbox"><i class="fas fa-chart-pie ml-1.5 text-indigo-400"></i>حجم مصرف شده</span>
       <span class="font-bold" id="usageHeadline"><span class="tbox">-</span></span>
     </div>
-    <div class="pbar mb-5"><div class="pfill" id="usageFill" style="width:0%"></div></div>
+    <div class="pbar mb-6"><div class="pfill" id="usageFill" style="width:0%"></div></div>
     <div class="grid grid-cols-2 gap-4">
       <div class="inner rounded-2xl p-4 text-center">
-        <div class="text-[10px] mb-2"><span class="tbox"><i class="fas fa-calendar-days ml-1 text-purple-400"></i>تمدید بعدی</span></div>
-        <div class="text-[13px] font-semibold" id="renewDate"><span class="tbox">-</span></div>
+        <div class="text-[11px] mb-2"><span class="tbox"><i class="fas fa-calendar-days ml-1 text-purple-400"></i>تمدید بعدی</span></div>
+        <div class="text-[14px] font-semibold" id="renewDate"><span class="tbox">-</span></div>
       </div>
       <div class="inner rounded-2xl p-4 text-center">
-        <div class="text-[10px] mb-2"><span class="tbox"><i class="fas fa-hourglass-half ml-1 text-pink-400"></i>زمان باقیمانده</span></div>
-        <div class="text-[13px] font-semibold" id="daysLeft"><span class="tbox">-</span></div>
+        <div class="text-[11px] mb-2"><span class="tbox"><i class="fas fa-hourglass-half ml-1 text-pink-400"></i>زمان باقیمانده</span></div>
+        <div class="text-[14px] font-semibold" id="daysLeft"><span class="tbox">-</span></div>
       </div>
     </div>
   </div>
 
   <!-- PROTOCOL -->
-  <div class="card rounded-3xl p-6 hidden fade-in" id="protoCard" style="margin-top:20px">
+  <div class="card rounded-3xl p-6 hidden fade-in sec" id="protoCard">
     <div class="text-[12px] mb-4"><span class="tbox"><i class="fas fa-shuffle ml-1.5 text-indigo-400"></i>ترکیب پروتکل‌ها</span></div>
-    <div id="protoBars" class="space-y-3"></div>
+    <div id="protoBars" class="space-y-4"></div>
   </div>
 
   <!-- CONFIGS -->
-  <div id="listWrap" class="hidden" style="margin-top:20px">
-    <div class="flex items-center justify-between px-1 mb-3">
-      <h2 class="text-[11px] font-bold uppercase tracking-widest"><span class="tbox">کانفیگ‌ها <span class="mono" id="countBadge">(0)</span></span></h2>
-      <button id="copyAllBtn" class="text-[11px] text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1"><i class="fas fa-copy"></i>کپی همه</button>
+  <div id="listWrap" class="hidden sec">
+    <div class="flex items-center justify-between px-1 mb-4">
+      <h2 class="text-[12px] font-bold uppercase tracking-widest"><span class="tbox">کانفیگ‌ها <span class="mono" id="countBadge">(0)</span></span></h2>
+      <button id="copyAllBtn" class="text-[12px] text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1"><i class="fas fa-copy"></i>کپی همه</button>
     </div>
     <div id="list" class="space-y-4"></div>
   </div>
@@ -125,10 +126,10 @@ body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:9
   <p class="text-center text-[12px] hidden py-12" id="emptyMsg">کانفیگی پیدا نشد.</p>
 
   <!-- FOOTER -->
-  <div class="text-center pt-8 pb-4 fade-in" style="animation-delay:0.2s">
-    <p class="text-[11px] mb-3">کند ذهن هستید و نتوانستید وصل شوید ؟</p>
-    <a href="https://t.me/saweg78" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl text-[12px] font-semibold no-underline transition-all tg">
-      <i class="fab fa-telegram text-base"></i>بهتره به داش مهرداد پیام بدی
+  <div class="text-center pt-10 pb-4 fade-in" style="animation-delay:0.2s">
+    <p class="text-[12px] mb-4">کند ذهن هستید و نتوانستید وصل شوید ؟</p>
+    <a href="https://t.me/saweg78" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-[13px] font-semibold no-underline transition-all tg">
+      <i class="fab fa-telegram text-lg"></i>بهتره به داش مهرداد پیام بدی
     </a>
   </div>
 
@@ -145,8 +146,8 @@ function toggleTheme(){theme=theme==='dark'?'light':'dark';document.body.classNa
 const userTitle=document.getElementById('userTitle'),statusMsg=document.getElementById('statusMsg'),statusBadge=document.getElementById('statusBadge'),usageCard=document.getElementById('usageCard'),usageFill=document.getElementById('usageFill'),usageHeadline=document.getElementById('usageHeadline'),renewDate=document.getElementById('renewDate'),daysLeft=document.getElementById('daysLeft'),protoCard=document.getElementById('protoCard'),protoBars=document.getElementById('protoBars'),listWrap=document.getElementById('listWrap'),listEl=document.getElementById('list'),countBadge=document.getElementById('countBadge'),emptyMsg=document.getElementById('emptyMsg'),copyAllBtn=document.getElementById('copyAllBtn'),toastEl=document.getElementById('toast');
 
 function showToast(t){toastEl.innerHTML='<i class="fas fa-check-circle ml-1"></i> '+t;toastEl.classList.add('show');setTimeout(()=>toastEl.classList.remove('show'),1800)}
-function setBadge(s,t){const c={loading:'loading',active:'active',error:'error'};statusBadge.className='inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-medium rounded-full border';const colors={loading:['rgba(148,163,184,0.1)','#94a3b8','rgba(148,163,184,0.15)','bg-slate-400'],active:['rgba(16,185,129,0.1)','#34d399','rgba(16,185,129,0.2)','bg-emerald-400'],error:['rgba(244,63,94,0.1)','#fb7185','rgba(244,63,94,0.2)','bg-rose-400']};const cv=colors[s]||colors.loading;statusBadge.style.background=cv[0];statusBadge.style.color=cv[1];statusBadge.style.borderColor=cv[2];statusBadge.innerHTML=`<span class="w-1.5 h-1.5 rounded-full ${cv[3]} ${s==='active'?'animate-pulse':''}"></span><span>${t}</span>`}
-function setStatus(t){statusMsg.innerHTML='<span class="tbox" style="font-size:11px">'+t+'</span>'}
+function setBadge(s,t){const c={loading:'loading',active:'active',error:'error'};statusBadge.className='inline-flex items-center gap-1.5 px-4 py-1.5 text-[12px] font-medium rounded-full border';const colors={loading:['rgba(148,163,184,0.1)','#94a3b8','rgba(148,163,184,0.15)','bg-slate-400'],active:['rgba(16,185,129,0.1)','#34d399','rgba(16,185,129,0.2)','bg-emerald-400'],error:['rgba(244,63,94,0.1)','#fb7185','rgba(244,63,94,0.2)','bg-rose-400']};const cv=colors[s]||colors.loading;statusBadge.style.background=cv[0];statusBadge.style.color=cv[1];statusBadge.style.borderColor=cv[2];statusBadge.innerHTML=`<span class="w-2 h-2 rounded-full ${cv[3]} ${s==='active'?'animate-pulse':''}"></span><span>${t}</span>`}
+function setStatus(t){statusMsg.innerHTML='<span class="tbox" style="font-size:12px">'+t+'</span>'}
 function b64d(s){s=s.trim().replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';try{return decodeURIComponent(escape(atob(s)))}catch(e){try{return atob(s)}catch(e2){return''}}}
 function fmtB(b){if(!isFinite(b)||b<0)return'-';const u=['B','KB','MB','GB','TB'];let i=0,v=b;while(v>=1024&&i<u.length-1){v/=1024;i++}return v.toFixed(v>=10?0:1)+' '+u[i]}
 const fd=['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];function toFa(n){return String(n).replace(/[0-9]/g,d=>fd[d])}
@@ -181,8 +182,8 @@ if(!lines.length){listWrap.classList.add('hidden');emptyMsg.classList.remove('hi
 emptyMsg.classList.add('hidden');listWrap.classList.remove('hidden');setStatus('اطلاعات اشتراک با موفقیت دریافت شد.');setBadge('active','فعال ✓');
 const entries=lines.map(pE);countBadge.textContent='('+toFa(entries.length)+')';renderProto(entries);
 if(entries.length&&entries[0].n)userTitle.innerHTML='<span class="tbox">'+entries[0].n+'</span>';
-entries.forEach((e,i)=>{const card=document.createElement('div');card.className='card rounded-2xl p-4 fade-in';
-card.innerHTML='<div class="flex items-center justify-between"><div class="flex items-center gap-3 min-w-0"><div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:'+e.p.c+'18;color:'+e.p.c+'"><i class="fas '+e.p.i+' text-lg"></i></div><div class="min-w-0"><div class="text-[13px] font-semibold truncate"><span class="tbox">'+e.n+'</span></div><div class="text-[10px] mono truncate"><span class="tbox">'+e.s+'</span></div></div></div><div class="flex items-center gap-1.5 flex-shrink-0"><button class="ic w-9 h-9 rounded-xl flex items-center justify-center cursor-pointer transition-all qr-t"><i class="fas fa-qrcode text-[13px]"></i></button><button class="ic w-9 h-9 rounded-xl flex items-center justify-center cursor-pointer transition-all cp-o"><i class="fas fa-copy text-[13px]"></i></button></div></div><div class="qr-box" id="qr-'+i+'"><div class="p-2 bg-white rounded-xl" id="qr-c-'+i+'"></div></div>';
+entries.forEach((e,i)=>{const card=document.createElement('div');card.className='card rounded-2xl p-5 fade-in';
+card.innerHTML='<div class="flex items-center justify-between"><div class="flex items-center gap-4 min-w-0"><div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:'+e.p.c+'18;color:'+e.p.c+'"><i class="fas '+e.p.i+' text-xl"></i></div><div class="min-w-0"><div class="text-sm font-semibold truncate"><span class="tbox">'+e.n+'</span></div><div class="text-[11px] mono truncate"><span class="tbox">'+e.s+'</span></div></div></div><div class="flex items-center gap-2 flex-shrink-0"><button class="ic w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all qr-t"><i class="fas fa-qrcode"></i></button><button class="ic w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all cp-o"><i class="fas fa-copy"></i></button></div></div><div class="qr-box" id="qr-'+i+'"><div class="p-2 bg-white rounded-xl" id="qr-c-'+i+'"></div></div>';
 listEl.appendChild(card);
 card.querySelector('.cp-o').onclick=()=>navigator.clipboard.writeText(e.u).then(()=>showToast('کپی شد ✓'));
 card.querySelector('.qr-t').onclick=()=>{const q=card.querySelector('.qr-box');const showing=q.classList.contains('show');q.classList.toggle('show',!showing);const h=card.querySelector('#qr-c-'+i);if(!showing&&h.childElementCount===0)new QRCode(h,{text:e.u,width:140,height:140,colorDark:'#0B0E13',colorLight:'#ffffff'})}})}
