@@ -6,72 +6,144 @@
 <title>MVPN - اشتراک شما</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
+:root{
+  --bg:#14171c;
+  --bg-2:#0f1216;
+  --coral:#e15a4c;
+  --coral-2:#f0705f;
+  --coral-deep:#c14a3e;
+  --coral-glow:rgba(225,90,76,.35);
+  --gold:#e0a44f;
+  --cool:#5b9bd5;
+  --fg:#f3efea;
+  --muted:#aab0b9;
+  --muted-2:#7b818b;
+  --glass:rgba(255,255,255,.055);
+  --glass-2:rgba(255,255,255,.085);
+  --glass-brd:rgba(255,255,255,.12);
+  --glass-brd-2:rgba(255,255,255,.2);
+  --hi:inset 0 1px 0 rgba(255,255,255,.28), inset 0 -1px 1px rgba(0,0,0,.25);
+  --drop:0 30px 60px -24px rgba(0,0,0,.6);
+  --radius:26px;
+  --radius-sm:16px;
+  --sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --fa:'Vazirmatn',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --blur:saturate(170%) blur(26px);
+}
+
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Vazirmatn',sans-serif;min-height:100vh;overflow-x:hidden}
-body.dark{background:#000;color:#e2e8f0}
-body.dark::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(99,102,241,0.12) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(168,85,247,0.08) 0%,transparent 50%);z-index:-1}
-body.light{background:#f0f2f5;color:#1a1a2e}
-body.light::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(99,102,241,0.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(168,85,247,0.04) 0%,transparent 50%);z-index:-1}
-body.dark .card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);box-shadow:0 8px 32px rgba(0,0,0,0.35)}
-body.light .card{background:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.8);box-shadow:0 8px 32px rgba(0,0,0,0.06)}
-body.dark .inner{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04)}
-body.light .inner{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.06)}
-body.dark .tbox{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:6px 12px;display:inline-block}
-body.light .tbox{background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:6px 12px;display:inline-block}
-body.dark .ic{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:#94a3b8}
-body.dark .ic:hover{background:rgba(99,102,241,0.15);color:#818cf8}
-body.light .ic{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.06);color:#64748b}
-body.light .ic:hover{background:rgba(99,102,241,0.1);color:#6366f1}
-body.dark .tg{background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.15);color:#818cf8}
-body.dark .tg:hover{background:rgba(99,102,241,0.15)}
-body.light .tg{background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.12);color:#4f46e5}
-body.light .tg:hover{background:rgba(99,102,241,0.1)}
-.theme-btn{position:fixed;top:14px;left:14px;z-index:50;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:16px;transition:all 0.3s}
-body.dark .theme-btn{background:rgba(255,255,255,0.06);color:#fbbf24;border:1px solid rgba(255,255,255,0.08)}
-body.light .theme-btn{background:rgba(0,0,0,0.03);color:#6366f1;border:1px solid rgba(0,0,0,0.06)}
-.theme-btn:hover{transform:scale(1.1)}
-.pbar{background:rgba(148,163,184,0.1);border-radius:99px;height:8px;overflow:hidden}
-body.light .pbar{background:rgba(0,0,0,0.06)}
-.pfill{height:100%;border-radius:99px;background:linear-gradient(90deg,#6366f1,#a855f7,#ec4899);background-size:200% 100%;animation:shimmer 3s ease infinite;transition:width 0.8s}
-@keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-body.dark .pbar2{height:5px;border-radius:99px;background:rgba(255,255,255,0.04)}
-body.light .pbar2{height:5px;border-radius:99px;background:rgba(0,0,0,0.04)}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:linear-gradient(135deg,#10b981,#059669);color:white;font-weight:700;padding:10px 20px;border-radius:16px;font-size:12px;z-index:100;opacity:0;transition:all 0.3s}
+body{font-family:var(--fa);background:var(--bg);color:var(--fg);line-height:1.75;overflow-x:hidden;min-height:100vh}
+
+/* Liquid background */
+.bg-fx{position:fixed;inset:0;z-index:-3;background:radial-gradient(120% 100% at 50% 0%,#1b2028,var(--bg-2))}
+.orb{position:fixed;border-radius:50%;filter:blur(80px);z-index:-2;opacity:.55;animation:drift 22s ease-in-out infinite}
+.orb.o1{width:460px;height:460px;background:var(--coral);top:-140px;right:-100px}
+.orb.o2{width:400px;height:400px;background:var(--cool);top:34%;left:-140px;animation-delay:-7s;opacity:.4}
+.orb.o3{width:420px;height:420px;background:var(--gold);bottom:-160px;right:22%;animation-delay:-13s;opacity:.35}
+.orb.o4{width:340px;height:340px;background:#9b6ad0;top:60%;right:-120px;animation-delay:-4s;opacity:.3}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(38px,-34px) scale(1.09)}66%{transform:translate(-30px,26px) scale(.94)}}
+
+.noise{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* Glass */
+.glass{background:var(--glass);border:1px solid var(--glass-brd);border-radius:var(--radius);
+  -webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);box-shadow:var(--hi),var(--drop);position:relative;overflow:hidden}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,0) 40%)}
+
+.glass-sm{background:var(--glass);border:1px solid var(--glass-brd);border-radius:var(--radius-sm);
+  -webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);position:relative;overflow:hidden}
+.glass-sm::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,0) 40%)}
+
+/* Theme toggle */
+.theme-btn{position:fixed;top:14px;left:14px;z-index:50;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:16px;transition:all 0.3s;background:var(--glass);color:var(--gold);border:1px solid var(--glass-brd);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);box-shadow:var(--hi)}
+.theme-btn:hover{transform:scale(1.1);color:var(--coral)}
+body.light{background:#f3efea;color:#14171c}
+body.light .glass{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8);box-shadow:0 8px 32px rgba(0,0,0,.06)}
+body.light .glass::before{background:linear-gradient(160deg,rgba(255,255,255,.6),rgba(255,255,255,0) 40%)}
+body.light .glass-sm{background:rgba(255,255,255,.5);border:1px solid rgba(0,0,0,.06)}
+body.light .glass-sm::before{background:linear-gradient(160deg,rgba(255,255,255,.5),rgba(255,255,255,0) 40%)}
+body.light .theme-btn{background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.08);color:#6366f1}
+body.light .orb{opacity:.15}
+body.light .tbox{background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.08)}
+body.light .ic{background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.06);color:#64748b}
+body.light .ic:hover{background:rgba(99,102,241,.1);color:#6366f1}
+body.light .tg{background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.12);color:#4f46e5}
+body.light .pbar{background:rgba(0,0,0,.06)}
+
+/* Text box */
+.tbox{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:6px 12px;display:inline-block}
+body.light .tbox{background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.08)}
+
+/* Icon buttons */
+.ic{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);color:var(--muted);width:40px;height:40px;border-radius:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s}
+.ic:hover{background:var(--coral-glow);border-color:rgba(225,90,76,.3);color:var(--coral)}
+body.light .ic{background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.06);color:#64748b}
+body.light .ic:hover{background:rgba(99,102,241,.1);color:#6366f1}
+
+/* Telegram button */
+.tg{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:16px;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);color:#818cf8;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.3s}
+.tg:hover{background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.3);transform:translateY(-1px)}
+
+/* Progress bar */
+.pbar{background:rgba(255,255,255,.08);border-radius:99px;height:8px;overflow:hidden}
+.pfill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--coral),var(--coral-2));transition:width 0.8s}
+body.light .pbar{background:rgba(0,0,0,.06)}
+
+/* Proto bar */
+.pbar2{height:5px;border-radius:99px;background:rgba(255,255,255,.04)}
+body.light .pbar2{background:rgba(0,0,0,.04)}
+
+/* Proto icon */
+.proto-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;position:relative;overflow:hidden}
+.proto-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15) 0%,transparent 60%)}
+
+/* Logo */
+.logo-main{width:88px;height:88px;margin:0 auto 24px;border-radius:26px;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(135deg,var(--coral),var(--coral-deep));box-shadow:0 12px 40px var(--coral-glow),0 0 80px rgba(225,90,76,.15)}
+.logo-main::before{content:'';position:absolute;inset:-3px;border-radius:28px;background:linear-gradient(135deg,rgba(225,90,76,.6),rgba(240,112,95,.6),rgba(193,74,62,.6));z-index:-1;filter:blur(8px);opacity:.6}
+.logo-main .logo-inner{position:absolute;inset:0;border-radius:26px;background:linear-gradient(135deg,rgba(255,255,255,.2) 0%,transparent 50%)}
+
+/* Toast */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:linear-gradient(135deg,var(--coral),var(--coral-deep));color:white;font-weight:700;padding:10px 20px;border-radius:16px;font-size:12px;z-index:100;opacity:0;transition:all 0.3s;box-shadow:0 8px 24px var(--coral-glow)}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-.qr-box{display:none;padding-top:16px;margin-top:16px;border-top:1px dashed rgba(148,163,184,0.15);justify-content:center}
+
+/* QR box */
+.qr-box{display:none;padding-top:16px;margin-top:16px;border-top:1px dashed rgba(255,255,255,.1);justify-content:center}
 .qr-box.show{display:flex}
-body.light .qr-box{border-top-color:rgba(0,0,0,0.08)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.fade-in{animation:fadeUp 0.5s ease-out forwards;opacity:0}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}
-body.dark ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:99px}
-body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:99px}
-.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+body.light .qr-box{border-top-color:rgba(0,0,0,.08)}
+
+/* Section spacing */
 .sec{margin-bottom:40px}
 
-/* Logo styles */
-.logo-main{width:88px;height:88px;margin:0 auto 24px;border-radius:26px;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(135deg,#6366f1,#8b5cf6,#a855f7);box-shadow:0 12px 40px rgba(99,102,241,0.5),0 0 80px rgba(139,92,246,0.2)}
-.logo-main::before{content:'';position:absolute;inset:-3px;border-radius:28px;background:linear-gradient(135deg,rgba(99,102,241,0.6),rgba(168,85,247,0.6),rgba(236,72,153,0.6));z-index:-1;filter:blur(8px);opacity:0.6}
-.logo-main .logo-inner{position:absolute;inset:0;border-radius:26px;background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 50%)}
-.logo-main svg{position:relative;z-index:1;filter:drop-shadow(0 2px 8px rgba(255,255,255,0.3))}
+/* Fade in */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeUp 0.5s ease-out forwards;opacity:0}
 
-.proto-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;position:relative;overflow:hidden}
-.proto-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.15) 0%,transparent 60%)}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:99px}
+.mono{font-family:var(--mono)}
 </style>
 </head>
-<body class="dark">
+<body>
+<div class="bg-fx"></div>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+<div class="orb o4"></div>
+<div class="noise"></div>
+
 <button class="theme-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
 
-<div class="w-full max-w-md mx-auto px-5 pt-16 pb-10">
+<div style="max-width:440px;margin:0 auto;padding:20px 20px 40px;padding-top:70px">
 
   <!-- HEADER -->
-  <div class="card rounded-3xl p-10 text-center relative overflow-hidden fade-in" style="animation-delay:0s">
-    <div class="h-[2px] absolute top-0 left-0 w-full bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent"></div>
-
-    <!-- لوگوی اصلی -->
+  <div class="glass" style="padding:40px 28px;text-align:center" class="fade-in">
     <div class="logo-main">
       <div class="logo-inner"></div>
       <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -79,58 +151,78 @@ body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:9
         <path d="M9 12l2 2 4-4" stroke-width="2"/>
       </svg>
     </div>
-
-    <h1 class="text-xl font-bold mb-3" id="userTitle"><span class="tbox">اکانت شما</span></h1>
-    <p class="text-[12px] mb-4" id="statusMsg"><span class="tbox" style="font-size:12px">در حال دریافت اطلاعات...</span></p>
+    <h1 style="font-size:18px;font-weight:700;margin-bottom:12px"><span class="tbox">Hshshd📊500.00GB|⏳ 3D</span></h1>
+    <p style="font-size:12px;margin-bottom:16px;color:var(--muted)"><span class="tbox" style="font-size:12px">اطلاعات اشتراک با موفقیت دریافت شد.</span></p>
     <div>
-      <span class="inline-flex items-center gap-1.5 px-4 py-1.5 text-[12px] font-medium rounded-full border" style="background:rgba(148,163,184,0.1);color:#94a3b8;border-color:rgba(148,163,184,0.15)" id="statusBadge">
-        <span class="w-2 h-2 rounded-full" style="background:#94a3b8"></span>
-        <span id="statusBadgeText">در حال بررسی</span>
+      <span class="inline-flex items-center gap-1.5 px-4 py-1.5 text-[12px] font-medium rounded-full border" style="background:rgba(16,185,129,.1);color:#34d399;border-color:rgba(16,185,129,.2)">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>فعال ✓</span>
       </span>
     </div>
   </div>
 
   <!-- USAGE -->
-  <div class="card rounded-3xl p-7 hidden fade-in sec" id="usageCard">
-    <div class="flex justify-between items-center text-sm mb-4">
-      <span class="tbox"><i class="fas fa-chart-pie ml-1.5 text-indigo-400"></i>حجم مصرف شده</span>
-      <span class="font-bold" id="usageHeadline"><span class="tbox">-</span></span>
+  <div class="glass sec fade-in" style="padding:28px;margin-top:40px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <span class="tbox" style="font-size:13px"><i class="fas fa-chart-pie ml-1.5" style="color:var(--coral)"></i>حجم مصرف شده</span>
+      <span style="font-weight:700;font-size:14px"><span class="tbox">0 B</span> <span class="tbox" style="font-size:11px">از 100 GB</span></span>
     </div>
-    <div class="pbar mb-8"><div class="pfill" id="usageFill" style="width:0%"></div></div>
-    <div class="grid grid-cols-2 gap-5">
-      <div class="inner rounded-2xl p-4 text-center">
-        <div class="text-[11px] mb-2"><span class="tbox"><i class="fas fa-calendar-days ml-1 text-purple-400"></i>تمدید بعدی</span></div>
-        <div class="text-[14px] font-semibold" id="renewDate"><span class="tbox">-</span></div>
+    <div class="pbar" style="margin-bottom:28px"><div class="pfill" style="width:0%"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div class="glass-sm" style="padding:16px;text-align:center">
+        <div style="font-size:11px;margin-bottom:8px;color:var(--muted)"><span class="tbox"><i class="fas fa-calendar-days ml-1" style="color:var(--gold)"></i>تمدید بعدی</span></div>
+        <div style="font-size:14px;font-weight:600"><span class="tbox">۱۴۰۵/۰۵/۰۸</span></div>
       </div>
-      <div class="inner rounded-2xl p-4 text-center">
-        <div class="text-[11px] mb-2"><span class="tbox"><i class="fas fa-hourglass-half ml-1 text-pink-400"></i>زمان باقیمانده</span></div>
-        <div class="text-[14px] font-semibold" id="daysLeft"><span class="tbox">-</span></div>
+      <div class="glass-sm" style="padding:16px;text-align:center">
+        <div style="font-size:11px;margin-bottom:8px;color:var(--muted)"><span class="tbox"><i class="fas fa-hourglass-half ml-1" style="color:var(--coral-2)"></i>زمان باقیمانده</span></div>
+        <div style="font-size:14px;font-weight:600"><span class="tbox">۳۰ روز</span></div>
       </div>
     </div>
   </div>
 
   <!-- PROTOCOL -->
-  <div class="card rounded-3xl p-7 hidden fade-in sec" id="protoCard">
-    <div class="text-[12px] mb-4"><span class="tbox"><i class="fas fa-shuffle ml-1.5 text-indigo-400"></i>ترکیب پروتکل‌ها</span></div>
-    <div id="protoBars" class="space-y-4"></div>
+  <div class="glass sec fade-in" style="padding:28px;margin-top:40px;animation-delay:0.1s">
+    <div style="font-size:12px;margin-bottom:16px"><span class="tbox"><i class="fas fa-shuffle ml-1.5" style="color:var(--cool)"></i>ترکیب پروتکل‌ها</span></div>
+    <div style="display:flex;align-items:center;gap:12px;font-size:12px">
+      <span class="mono" style="width:72px;flex-shrink:0;font-weight:700;color:var(--cool)">VLESS</span>
+      <div class="pbar2" style="flex:1"><div class="h-full rounded-full" style="width:100%;background:var(--cool)"></div></div>
+      <span class="mono" style="width:20px;text-align:left">۱</span>
+    </div>
   </div>
 
   <!-- CONFIGS -->
-  <div id="listWrap" class="hidden sec">
-    <div class="flex items-center justify-between px-1 mb-5">
-      <h2 class="text-[12px] font-bold uppercase tracking-widest"><span class="tbox">کانفیگ‌ها <span class="mono" id="countBadge">(0)</span></span></h2>
-      <button id="copyAllBtn" class="text-[12px] text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1"><i class="fas fa-copy"></i>کپی همه</button>
+  <div class="sec fade-in" style="margin-top:40px;animation-delay:0.15s">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 4px;margin-bottom:20px">
+      <h2 style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px"><span class="tbox">کانفیگ‌ها <span class="mono">(۱)</span></span></h2>
+      <button style="font-size:12px;color:var(--coral);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px" onclick="copyAll()"><i class="fas fa-copy"></i>کپی همه</button>
     </div>
-    <div id="list" class="space-y-5"></div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="glass-sm" style="padding:20px">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:16px;min-width:0">
+            <div class="proto-icon" style="background:rgba(225,90,76,.15);color:var(--coral)"><i class="fas fa-bolt"></i></div>
+            <div style="min-width:0">
+              <div style="font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span class="tbox">Hshshd📊500.00GB|⏳ 3D</span></div>
+              <div class="mono" style="font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted)"><span class="tbox">acela.proxy.rlwy.net:47291 · xhttp</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+            <button class="ic" onclick="showQR()"><i class="fas fa-qrcode"></i></button>
+            <button class="ic" onclick="copyConfig()"><i class="fas fa-copy"></i></button>
+          </div>
+        </div>
+        <div class="qr-box" id="qrBox">
+          <div class="p-2 bg-white rounded-xl" id="qrCanvas"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <p class="text-center text-[12px] hidden py-12" id="emptyMsg">کانفیگی پیدا نشد.</p>
-
   <!-- FOOTER -->
-  <div class="text-center pt-12 pb-4 fade-in" style="animation-delay:0.2s">
-    <p class="text-[12px] mb-4">کند ذهن هستید و نتوانستید وصل شوید ؟</p>
-    <a href="https://t.me/saweg78" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-[13px] font-semibold no-underline transition-all tg">
-      <i class="fab fa-telegram text-lg"></i>بهتره به داش مهرداد پیام بدی
+  <div class="fade-in" style="text-align:center;padding-top:48px;padding-bottom:16px;animation-delay:0.2s">
+    <p style="font-size:12px;margin-bottom:16px;color:var(--muted)">کند ذهن هستید و نتوانستید وصل شوید ؟</p>
+    <a href="https://t.me/saweg78" class="tg">
+      <i class="fab fa-telegram" style="font-size:16px"></i>بهتره به داش مهرداد پیام بدی
     </a>
   </div>
 
@@ -143,58 +235,11 @@ let theme=localStorage.getItem('mvpn-theme')||'dark';
 document.body.className=theme;
 document.getElementById('themeIcon').className=theme==='dark'?'fas fa-sun':'fas fa-moon';
 function toggleTheme(){theme=theme==='dark'?'light':'dark';document.body.className=theme;localStorage.setItem('mvpn-theme',theme);document.getElementById('themeIcon').className=theme==='dark'?'fas fa-sun':'fas fa-moon'}
-
-const userTitle=document.getElementById('userTitle'),statusMsg=document.getElementById('statusMsg'),statusBadge=document.getElementById('statusBadge'),usageCard=document.getElementById('usageCard'),usageFill=document.getElementById('usageFill'),usageHeadline=document.getElementById('usageHeadline'),renewDate=document.getElementById('renewDate'),daysLeft=document.getElementById('daysLeft'),protoCard=document.getElementById('protoCard'),protoBars=document.getElementById('protoBars'),listWrap=document.getElementById('listWrap'),listEl=document.getElementById('list'),countBadge=document.getElementById('countBadge'),emptyMsg=document.getElementById('emptyMsg'),copyAllBtn=document.getElementById('copyAllBtn'),toastEl=document.getElementById('toast');
-
-function showToast(t){toastEl.innerHTML='<i class="fas fa-check-circle ml-1"></i> '+t;toastEl.classList.add('show');setTimeout(()=>toastEl.classList.remove('show'),1800)}
-function setBadge(s,t){statusBadge.className='inline-flex items-center gap-1.5 px-4 py-1.5 text-[12px] font-medium rounded-full border';const colors={loading:['rgba(148,163,184,0.1)','#94a3b8','rgba(148,163,184,0.15)','bg-slate-400'],active:['rgba(16,185,129,0.1)','#34d399','rgba(16,185,129,0.2)','bg-emerald-400'],error:['rgba(244,63,94,0.1)','#fb7185','rgba(244,63,94,0.2)','bg-rose-400']};const cv=colors[s]||colors.loading;statusBadge.style.background=cv[0];statusBadge.style.color=cv[1];statusBadge.style.borderColor=cv[2];statusBadge.innerHTML=`<span class="w-2 h-2 rounded-full ${cv[3]} ${s==='active'?'animate-pulse':''}"></span><span>${t}</span>`}
-function setStatus(t){statusMsg.innerHTML='<span class="tbox" style="font-size:12px">'+t+'</span>'}
-function b64d(s){s=s.trim().replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';try{return decodeURIComponent(escape(atob(s)))}catch(e){try{return atob(s)}catch(e2){return''}}}
-function fmtB(b){if(!isFinite(b)||b<0)return'-';const u=['B','KB','MB','GB','TB'];let i=0,v=b;while(v>=1024&&i<u.length-1){v/=1024;i++}return v.toFixed(v>=10?0:1)+' '+u[i]}
-const fd=['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];function toFa(n){return String(n).replace(/[0-9]/g,d=>fd[d])}
-function toJ(gy,gm,gd){const g=[0,31,59,90,120,151,181,212,243,273,304,334];let jy;if(gy<=1600){jy=0;gy-=621}else{jy=979;gy-=1600}const g2=(gm>2)?(gy+1):gy;let days=(365*gy)+Math.floor((g2+3)/4)-Math.floor((g2+99)/100)+Math.floor((g2+399)/400)-80+gd+g[gm-1];jy+=33*Math.floor(days/12053);days%=12053;jy+=4*Math.floor(days/1461);days%=1461;if(days>365){jy+=Math.floor((days-1)/365);days=(days-1)%365}const jm=(days<186)?1+Math.floor(days/31):7+Math.floor((days-186)/30);const jd=1+((days<186)?(days%31):((days-186)%30));return[jy,jm,jd]}
-function fmtJ(u){const d=new Date(u*1000);const[jy,jm,jd]=toJ(d.getFullYear(),d.getMonth()+1,d.getDate());return toFa(jy+'/'+String(jm).padStart(2,'0')+'/'+String(jd).padStart(2,'0'))}
-
-function renderUsage(h){
-if(!h){usageCard.classList.add('hidden');return}
-const p={};h.split(';').forEach(s=>{const[k,v]=s.trim().split('=');if(k&&v!==undefined)p[k.trim()]=parseInt(v.trim(),10)});
-const used=(p.upload||0)+(p.download||0),total=p.total||0,expire=p.expire||0;
-usageCard.classList.remove('hidden');
-if(total>0){const pct=Math.min(100,(used/total)*100);usageFill.style.width=pct+'%';if(pct>90)usageFill.style.background='linear-gradient(90deg,#ef4444,#dc2626)';else if(pct>70)usageFill.style.background='linear-gradient(90deg,#f59e0b,#f97316)';else usageFill.style.background='';usageHeadline.innerHTML='<span class="tbox">'+fmtB(used)+'</span> <span class="text-[11px] tbox">از '+fmtB(total)+'</span>'}
-else if(used>0){usageFill.style.width='100%';usageHeadline.innerHTML='<span class="tbox">'+fmtB(used)+'</span> <span class="text-[11px] tbox">نامحدود</span>'}
-else{usageFill.style.width='0%';usageHeadline.innerHTML='<span class="tbox">بدون مصرف</span>'}
-if(expire>0){const now=Math.floor(Date.now()/1000);const days=Math.max(0,Math.ceil((expire-now)/86400));daysLeft.innerHTML='<span class="tbox">'+toFa(days)+' روز</span>';renewDate.innerHTML='<span class="tbox">'+fmtJ(expire)+'</span>'}
-else{daysLeft.innerHTML='<span class="tbox">نامحدود</span>';renewDate.innerHTML='<span class="tbox">نامحدود</span>'}}
-
-function dP(u){if(u.startsWith('vless://'))return{key:'vless',l:'VLESS',i:'fa-bolt',c:'#818cf8',bg:'rgba(129,140,248,0.15)'};if(u.startsWith('vmess://'))return{key:'vmess',l:'VMESS',i:'fa-shuffle',c:'#c084fc',bg:'rgba(192,132,252,0.15)'};if(u.startsWith('trojan://'))return{key:'trojan',l:'TROJAN',i:'fa-mask',c:'#f472b6',bg:'rgba(244,114,182,0.15)'};if(u.startsWith('ss://'))return{key:'ss',l:'SS',i:'fa-lock',c:'#38bdf8',bg:'rgba(56,189,248,0.15)'};if(u.startsWith('hysteria2://')||u.startsWith('hy2://'))return{key:'hy2',l:'HY2',i:'fa-cloud',c:'#34d399',bg:'rgba(52,211,153,0.15)'};if(u.startsWith('tuic://'))return{key:'tuic',l:'TUIC',i:'fa-satellite-dish',c:'#fbbf24',bg:'rgba(251,191,36,0.15)'};return{key:'other',l:'UNK',i:'fa-link',c:'#94a3b8',bg:'rgba(148,163,184,0.15)'}}
-function pE(u){const p=dP(u);let n=p.l,s='';try{if(p.key==='vmess'){const j=JSON.parse(b64d(u.replace('vmess://','')));n=j.ps||p.l;s=(j.add||'-')+':'+(j.port||'-')+' · '+(j.net||'tcp')}else{const hi=u.indexOf('#');if(hi>-1)n=decodeURIComponent(u.slice(hi+1))||p.l;const body=u.split('://')[1]||'';const bh=body.split('#')[0];const[uh,qs]=bh.split('?');const af=uh.includes('@')?uh.split('@')[1]:uh;const[host,port]=af.split(':');const sp=new URLSearchParams(qs||'');s=(host||'-')+':'+(port||'-')+' · '+(sp.get('type')||'tcp')}}catch(e){}return{u,p,n,s}}
-
-function renderProto(entries){
-const cnt={};entries.forEach(e=>{cnt[e.p.key]=(cnt[e.p.key]||0)+1});const keys=Object.keys(cnt);protoBars.innerHTML='';
-if(!keys.length){protoCard.classList.add('hidden');return}protoCard.classList.remove('hidden');
-const mx=Math.max(...Object.values(cnt));
-keys.forEach(k=>{const s=entries.find(e=>e.p.key===k).p;const r=document.createElement('div');r.className='flex items-center gap-3 text-[12px]';
-r.innerHTML='<span class="w-[72px] flex-shrink-0 font-bold mono" style="color:'+s.c+'">'+s.l+'</span><div class="flex-1 pbar2"><div class="h-full rounded-full" style="width:'+(cnt[k]/mx*100)+'%;background:'+s.c+'"></div></div><span class="mono w-5 text-left">'+toFa(cnt[k])+'</span>';
-protoBars.appendChild(r)})}
-
-function renderEntries(raw){
-listEl.innerHTML='';const lines=raw.split(/\r?\n/).map(l=>l.trim()).filter(l=>/^[a-z0-9]+:\/\//i.test(l));
-if(!lines.length){listWrap.classList.add('hidden');emptyMsg.classList.remove('hidden');setBadge('error','کانفیگی یافت نشد');return}
-emptyMsg.classList.add('hidden');listWrap.classList.remove('hidden');setStatus('اطلاعات اشتراک با موفقیت دریافت شد.');setBadge('active','فعال ✓');
-const entries=lines.map(pE);countBadge.textContent='('+toFa(entries.length)+')';renderProto(entries);
-if(entries.length&&entries[0].n)userTitle.innerHTML='<span class="tbox">'+entries[0].n+'</span>';
-entries.forEach((e,i)=>{const card=document.createElement('div');card.className='card rounded-2xl p-5 fade-in';
-card.innerHTML=`<div class="flex items-center justify-between"><div class="flex items-center gap-4 min-w-0"><div class="proto-icon" style="background:${e.p.bg};color:${e.p.c}"><i class="fas ${e.p.i}"></i></div><div class="min-w-0"><div class="text-sm font-semibold truncate"><span class="tbox">${e.n}</span></div><div class="text-[11px] mono truncate"><span class="tbox">${e.s}</span></div></div></div><div class="flex items-center gap-2 flex-shrink-0"><button class="ic w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all qr-t"><i class="fas fa-qrcode"></i></button><button class="ic w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all cp-o"><i class="fas fa-copy"></i></button></div></div><div class="qr-box" id="qr-${i}"><div class="p-2 bg-white rounded-xl" id="qr-c-${i}"></div></div>`;
-listEl.appendChild(card);
-card.querySelector('.cp-o').onclick=()=>navigator.clipboard.writeText(e.u).then(()=>showToast('کپی شد ✓'));
-card.querySelector('.qr-t').onclick=()=>{const q=card.querySelector('.qr-box');const showing=q.classList.contains('show');q.classList.toggle('show',!showing);const h=card.querySelector('#qr-c-'+i);if(!showing&&h.childElementCount===0)new QRCode(h,{text:e.u,width:140,height:140,colorDark:'#0B0E13',colorLight:'#ffffff'})}})}
-copyAllBtn.onclick=()=>navigator.clipboard.writeText(window.__rawSub||'').then(()=>showToast('همه کپی شد ✓'));
-
-async function loadFromServer(id){let url=id;if(!/^https?:\/\//i.test(id)){const c=id.replace(/^\/+/,'').replace(/^(sub|rawsub|view)\//,'');url='/rawsub/'+c}const res=await fetch(url);if(!res.ok)throw new Error('fail');renderUsage(res.headers.get('subscription-userinfo'));const raw=await res.text();let decoded=raw;if(!/:\/\//.test(raw))decoded=b64d(raw);window.__rawSub=decoded;renderEntries(decoded)}
-
-(function(){const p=new URLSearchParams(window.location.search);let sub=p.get('sub')||p.get('id');if(!sub){const m=window.location.pathname.match(/\/sub\/([^\/?#]+)/);if(m)sub=m[1]}
-if(sub){setStatus('صبر کنید...');setBadge('loading','در حال بررسی');loadFromServer(sub).catch(()=>{setStatus('دریافت ناموفق. لینک را دوباره امتحان کنید.');setBadge('error','خطا')})}
-else{ setStatus('لینک اشتراک معتبر نیست.');setBadge('error','نامعتبر')}})();
+function showToast(t){const el=document.getElementById('toast');el.innerHTML='<i class="fas fa-check-circle ml-1"></i> '+t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)}
+function copyConfig(){navigator.clipboard.writeText('vless://e0345850-259a-4937-8c73-fdaa14448adf@acela.proxy.rlwy.net:47291?encryption=none&security=none&type=xhttp&headerType=none#Hshshd%F0%9F%93%8A500.00GB%7C%E2%8F%B3%203D').then(()=>showToast('کپی شد ✓'))}
+function copyAll(){copyConfig()}
+let qrShown=false;
+function showQR(){const box=document.getElementById('qrBox');qrShown=!qrShown;box.classList.toggle('show',qrShown);if(qrShown&&!document.getElementById('qrCanvas').childElementCount)new QRCode(document.getElementById('qrCanvas'),{text:'vless://e0345850-259a-4937-8c73-fdaa14448adf@acela.proxy.rlwy.net:47291?encryption=none&security=none&type=xhttp&headerType=none#Hshshd%F0%9F%93%8A500.00GB%7C%E2%8F%B3%203D',width:140,height:140,colorDark:'#0B0E13',colorLight:'#ffffff'})}
 </script>
 </body>
 </html>
