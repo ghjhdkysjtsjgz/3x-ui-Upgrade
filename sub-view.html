@@ -64,7 +64,7 @@ body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:9
 .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
 
 /* Section spacing */
-.sec{margin-bottom:24px}
+.sec{margin-bottom:40px}
 </style>
 </head>
 <body class="dark">
@@ -73,7 +73,7 @@ body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:9
 <div class="w-full max-w-md mx-auto px-5 pt-16 pb-10">
 
   <!-- HEADER -->
-  <div class="card rounded-3xl p-8 text-center relative overflow-hidden fade-in" style="animation-delay:0s">
+  <div class="card rounded-3xl p-10 text-center relative overflow-hidden fade-in" style="animation-delay:0s">
     <div class="h-[2px] absolute top-0 left-0 w-full bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent"></div>
     <div class="w-[80px] h-[80px] mx-auto mb-6 rounded-[24px] flex items-center justify-center relative" style="background:linear-gradient(135deg,#6366f1,#8b5cf6,#a855f7);box-shadow:0 8px 24px rgba(99,102,241,0.4)">
       <div class="absolute inset-0 rounded-[24px]" style="background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 50%)"></div>
@@ -90,13 +90,13 @@ body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:9
   </div>
 
   <!-- USAGE -->
-  <div class="card rounded-3xl p-6 hidden fade-in sec" id="usageCard">
+  <div class="card rounded-3xl p-7 hidden fade-in sec" id="usageCard">
     <div class="flex justify-between items-center text-sm mb-4">
       <span class="tbox"><i class="fas fa-chart-pie ml-1.5 text-indigo-400"></i>حجم مصرف شده</span>
       <span class="font-bold" id="usageHeadline"><span class="tbox">-</span></span>
     </div>
-    <div class="pbar mb-6"><div class="pfill" id="usageFill" style="width:0%"></div></div>
-    <div class="grid grid-cols-2 gap-4">
+    <div class="pbar mb-8"><div class="pfill" id="usageFill" style="width:0%"></div></div>
+    <div class="grid grid-cols-2 gap-5">
       <div class="inner rounded-2xl p-4 text-center">
         <div class="text-[11px] mb-2"><span class="tbox"><i class="fas fa-calendar-days ml-1 text-purple-400"></i>تمدید بعدی</span></div>
         <div class="text-[14px] font-semibold" id="renewDate"><span class="tbox">-</span></div>
@@ -109,24 +109,24 @@ body.light ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.08);border-radius:9
   </div>
 
   <!-- PROTOCOL -->
-  <div class="card rounded-3xl p-6 hidden fade-in sec" id="protoCard">
+  <div class="card rounded-3xl p-7 hidden fade-in sec" id="protoCard">
     <div class="text-[12px] mb-4"><span class="tbox"><i class="fas fa-shuffle ml-1.5 text-indigo-400"></i>ترکیب پروتکل‌ها</span></div>
     <div id="protoBars" class="space-y-4"></div>
   </div>
 
   <!-- CONFIGS -->
   <div id="listWrap" class="hidden sec">
-    <div class="flex items-center justify-between px-1 mb-4">
+    <div class="flex items-center justify-between px-1 mb-5">
       <h2 class="text-[12px] font-bold uppercase tracking-widest"><span class="tbox">کانفیگ‌ها <span class="mono" id="countBadge">(0)</span></span></h2>
       <button id="copyAllBtn" class="text-[12px] text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1"><i class="fas fa-copy"></i>کپی همه</button>
     </div>
-    <div id="list" class="space-y-4"></div>
+    <div id="list" class="space-y-5"></div>
   </div>
 
   <p class="text-center text-[12px] hidden py-12" id="emptyMsg">کانفیگی پیدا نشد.</p>
 
   <!-- FOOTER -->
-  <div class="text-center pt-10 pb-4 fade-in" style="animation-delay:0.2s">
+  <div class="text-center pt-12 pb-6 fade-in" style="animation-delay:0.2s">
     <p class="text-[12px] mb-4">کند ذهن هستید و نتوانستید وصل شوید ؟</p>
     <a href="https://t.me/saweg78" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-[13px] font-semibold no-underline transition-all tg">
       <i class="fab fa-telegram text-lg"></i>بهتره به داش مهرداد پیام بدی
